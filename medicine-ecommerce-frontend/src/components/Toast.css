@@ -1,0 +1,66 @@
+/* High contrast toast styles for debugging */
+.toast-container {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  z-index: 2147483647;
+  /* Max z-index */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  pointer-events: none;
+}
+
+.toast {
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 320px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toast-success {
+  background-color: #d1fae5;
+  /* Very light green */
+  color: #065f46;
+  /* Dark green text */
+  border-color: #059669;
+}
+
+.toast-error {
+  background-color: #fee2e2;
+  /* Very light red */
+  color: #991b1b;
+  /* Dark red text */
+  border-color: #dc2626;
+}
+
+.toast-info {
+  background-color: #dbeafe;
+  /* Very light blue */
+  color: #1e40af;
+  /* Dark blue text */
+  border-color: #2563eb;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

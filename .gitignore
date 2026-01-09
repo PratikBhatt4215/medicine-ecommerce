@@ -1,0 +1,10 @@
+# Root level gitignore
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# OS
+Thumbs.db
