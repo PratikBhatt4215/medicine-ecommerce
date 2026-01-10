@@ -2,9 +2,6 @@ package com.medstore.controller;
 
 import com.medstore.constants.ResponseCodes;
 import com.medstore.dto.ApiResponse;
-import com.medstore.dto.JwtResponse;
-import com.medstore.dto.LoginRequest;
-import com.medstore.dto.RegisterRequest;
 import com.medstore.model.User;
 import com.medstore.service.MessageResolver;
 import com.medstore.service.UserService;
@@ -31,33 +28,9 @@ public class UserController {
     @Autowired
     private MessageResolver messageResolver;
 
+    
     private String getMessage(String code) {
         return messageResolver.getMessage(code);
-    }
-    
-    @PostMapping("/register")
-    public ResponseEntity<ApiResponse<User>> registerUser(@RequestBody RegisterRequest request) {
-        logger.info("Registering user: {}", request.getEmail());
-        User user = userService.registerUser(request);
-        logger.info("User registered successfully");
-        return ResponseEntity.ok(ApiResponse.success(user, getMessage(ResponseCodes.REGISTER_SUCCESS)));
-    }
-    
-    @PostMapping("/login")
-    public ResponseEntity<ApiResponse<JwtResponse>> loginUser(@RequestBody LoginRequest request) {
-        logger.info("Login attempt for user: {}", request.getEmail());
-        JwtResponse response = userService.loginUser(request);
-        logger.info("User logged in successfully");
-        return ResponseEntity.ok(ApiResponse.success(response, getMessage(ResponseCodes.LOGIN_SUCCESS)));
-    }
-    
-    @GetMapping("/profile")
-    public ResponseEntity<ApiResponse<User>> getUserProfile() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String email = authentication.getName();
-        logger.info("Fetching profile for user: {}", email);
-        User user = userService.getUserByEmail(email);
-        return ResponseEntity.ok(ApiResponse.success(user, getMessage(ResponseCodes.USER_PROFILE_RETRIEVED)));
     }
 
     @PostMapping("/timezone")
