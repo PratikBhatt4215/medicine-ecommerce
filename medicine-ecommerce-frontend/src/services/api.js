@@ -1,9 +1,6 @@
 import axios from 'axios';
 
-// Automatically uses the correct API URL based on environment
-// Local: http://localhost:8080/api (from .env.local)
-// Production: Railway backend URL (from .env.production or Railway env vars)
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
+const API_BASE_URL = 'http://localhost:8080/api';
 
 const api = axios.create({
   baseURL: API_BASE_URL,
